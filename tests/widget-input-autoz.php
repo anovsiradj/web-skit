@@ -31,7 +31,6 @@ require __DIR__ . '/test.php';
 </head>
 
 <body class="container py-5">
-
 	<form>
 		<input
 			id="input"
@@ -47,8 +46,6 @@ require __DIR__ . '/test.php';
 			data-ajax-req-href="./wilayah/index.php">
 		</select>
 	</form>
-
-
 </body>
 
 <script src="../main.js?<?= $count ?>"></script>
@@ -69,7 +66,7 @@ require __DIR__ . '/test.php';
 	$('#input').inputAutoz({
 		ajaxReqParams: function(search) {
 			return {
-				nama: search,
+				kode: search,
 			}
 		},
 		ajaxResConvert: function(result) {
@@ -82,7 +79,7 @@ require __DIR__ . '/test.php';
 	})
 
 	$('#selek').inputAutoz({
-		select2Options: {
+		select2Config: {
 			width: '33vw',
 		},
 		ajaxReqParams: function(search) {

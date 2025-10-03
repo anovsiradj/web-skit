@@ -1,21 +1,28 @@
-globalThis.inputAutozConfig = {
-	select2Options: {},
-	select2AjaxOptions: {
-		delay: 300,
-	},
-	juiOptions: {
-		minLength: 0,
+/**
+ * @author anovsiradj
+ * @origin app2022_alfon1_web
+ * @version 20251002,20230207
+ */
+
+$.fn.inputAutozConfig = {
+	select2Config: {},
+	select2AjaxConfig: {},
+	juiConfig: {
+		minLength: 1,
 		autoFocus: true,
 	},
+	ajaxDelay: 399,
+	formPreventSubmit: true,
+	resetOnFocus: true,
 	searchOnFocus: true,
-	selectOnFirst: false,
-	selectOnCount: 0,
-};
+	autoSelectFirst: true,
+	autoSelectCount: 1,
+}
 
 $.fn.inputAutoz = function (newConfig) {
 	newConfig ??= {}
 	newConfig.ajaxReqParams ??= {}
-	let oldConfig = inputAutozConfig
+	let oldConfig = $.fn.inputAutozConfig
 	let config = { ...oldConfig, ...newConfig }
 	// dump(config)
 
@@ -34,9 +41,22 @@ $.fn.inputAutoz = function (newConfig) {
 		return
 	}
 
+	if (config.formPreventSubmit) {
+		$(formElem).on('submit', (event) => {
+			event.preventDefault()
+		})
+	}
+
+	let ajaxResResultCount = (count) => {
+		config.ajaxResResultCount = count
+	};
+
 	if (termElem.tagName === 'INPUT') {
+		config.juiConfig ??= {}
+		config.juiConfig.delay ??= config.ajaxDelay
+
 		$(termElem).autocomplete({
-			...config.juiOptions,
+			...config.juiConfig,
 			source: function (request, response) {
 				$(termElem).val(request.term)
 
@@ -53,6 +73,8 @@ $.fn.inputAutoz = function (newConfig) {
 						if (config.ajaxResConvert) {
 							result = config.ajaxResConvert(result, status, xhr)
 						}
+						ajaxResResultCount(result.length)
+
 						response(result)
 					}
 				);
@@ -67,13 +89,27 @@ $.fn.inputAutoz = function (newConfig) {
 					console.info('select() kosong!')
 				}
 
-				setTimeout(() => {
-					$(termElem).val('')
-				}, 0);
+				if (config.resetOnFocus) {
+					setTimeout(() => {
+						$(termElem).val('')
+						$(termElem).autocomplete('search', '')
+					}, 0);
+				}
 			},
-			focus: function (event, ui) {
+			focus: function (_event, ui) {
 				let $autocomplete = $(this).autocomplete('instance');
 				let model = ui.item;
+
+				if (!config.autoSelectFirst) {
+					return
+				}
+				if (
+					config.autoSelectCount > 0 &&
+					config.autoSelectCount !== config.ajaxResResultCount
+				) {
+					return
+				}
+
 				if (model && this.value === model.value) {
 					setTimeout(() => {
 						$autocomplete._trigger('select', 'autocompleteselect', {
@@ -94,31 +130,33 @@ $.fn.inputAutoz = function (newConfig) {
 	}
 
 	if (termElem.tagName === 'SELECT') {
-		config.select2Options ??= {}
-		config.select2AjaxOptions ??= {}
+		config.select2Config ??= {}
+		config.select2AjaxConfig ??= {}
+		config.select2AjaxConfig.delay ??= config.ajaxDelay
 
 		$(termElem)
 			.select2({
-				...config.select2Options,
+				...config.select2Config,
 				ajax: {
-					...config.select2AjaxOptions,
+					...config.select2AjaxConfig,
 					url: ajaxReqHref,
 					data: function (params) {
-						if ($.isFunction(config.ajaxReqParams)) {
+						if (isTypeOf(config.ajaxReqParams, 'function')) {
 							let output = config.ajaxReqParams(params.term)
 							return output
 						}
 						return params
 					},
-					processResults: function (params) {
-						if ($.isFunction(config.ajaxResConvert)) {
-							let output = config.ajaxResConvert(params)
-							if (Array.isArray(output)) {
-								return { results: output }
+					processResults: function (result) {
+						if (isTypeOf(config.ajaxResConvert, 'function')) {
+							result = config.ajaxResConvert(result)
+							if (Array.isArray(result)) {
+								result = { results: result }
 							}
-							return output
 						}
-						return params
+						ajaxResResultCount(result.results.length)
+
+						return result
 					},
 				}
 			})
@@ -127,8 +165,11 @@ $.fn.inputAutoz = function (newConfig) {
 
 				if (config.select) {
 					config.select(model, event)
+				} else {
+					console.info('select() kosong!')
 				}
 			})
 	}
+
 	// ...
 };

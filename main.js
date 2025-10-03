@@ -36,6 +36,7 @@ globalThis.empty = function () {
 		return false
 	})
 };
+globalThis.isEmpty = globalThis.empty
 
 globalThis.isset = function () {
 	return Array.from(arguments).every(e => {
@@ -47,4 +48,9 @@ globalThis.isset = function () {
 		}
 		return true
 	})
+};
+globalThis.isHasValue = globalThis.isset
+
+globalThis.isTypeOf = function (data, type) {
+	return (typeof data === type)
 };

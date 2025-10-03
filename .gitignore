@@ -1,4 +1,6 @@
-/tests/wilayah/
-/vendor/
+/*.sublime*
 
+/vendor/
+/tests/wilayah/
 /tmp/
+
