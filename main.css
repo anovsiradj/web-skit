@@ -1,0 +1,10 @@
+/**
+ * @author anovsiradj
+ * @version 2025
+ */
+
+pre,
+textarea {
+	tab-size: 3;
+	white-space: preserve nowrap;
+}

@@ -12,12 +12,17 @@ require __DIR__ . '/test.php';
 	<title><?= $title ?></title>
 	<link rel="icon" href="../images/logo.ico">
 
-	<link rel="stylesheet" href="../vendor/npm-asset/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../vendor/twbs/bootstrap-icons/font/bootstrap-icons.min.css">
 
 	<link rel="stylesheet" href="../vendor/npm-asset/select2/dist/css/select2.min.css">
 	<link rel="stylesheet" href="../vendor/npm-asset/select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css">
 
 	<link rel="stylesheet" href="../vendor/npm-asset/jquery-ui/themes/base/all.css">
+
+	<link rel="stylesheet" href="../main.css?<?= $count ?>">
+	<link rel="stylesheet" href="../widgets/twbs/v5_sceme.css?<?= $count ?>">
+	<script src="../widgets/twbs/v5_sceme.js?<?= $count ?>"></script>
 
 	<style>
 		.ui-autocomplete.ui-front {
@@ -45,18 +50,23 @@ require __DIR__ . '/test.php';
 			name="selek"
 			data-ajax-req-href="./wilayah/index.php">
 		</select>
-	</form>
-</body>
 
-<script src="../main.js?<?= $count ?>"></script>
-<script src="./test.js?<?= $count ?>"></script>
+		<div class="py-1"></div>
+
+		<textarea id="output" style="resize: both; width: 50vw; height: 70vh;"></textarea>
+	</form>
+
+	<?php include __DIR__ . '/../widgets/twbs/v5_sceme.html' ?>
+</body>
 
 <script src="../vendor/npm-asset/jquery/dist/jquery.min.js"></script>
 <script src="../vendor/npm-asset/jquery-ui/dist/jquery-ui.min.js"></script>
-<script src="../vendor/npm-asset/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="../vendor/npm-asset/select2/dist/js/select2.min.js"></script>
+<script src="../vendor/npm-asset/select2/dist/js/i18n/id.js"></script>
 
+<script src="../main.js?<?= $count ?>"></script>
 <script src="../widgets/input-autoz.js?<?= $count ?>"></script>
 
 <script>
@@ -75,6 +85,10 @@ require __DIR__ . '/test.php';
 				item.label = `${item.kode} — ${item.nama}`
 				return item
 			})
+		},
+
+		select(result) {
+			$('#output').val(JSON.stringify(result, null, '\t'))
 		},
 	})
 
@@ -95,6 +109,9 @@ require __DIR__ . '/test.php';
 					return item
 				}),
 			}
+		},
+		select(result) {
+			$('#output').val(JSON.stringify(result, null, '\t'))
 		},
 	})
 </script>

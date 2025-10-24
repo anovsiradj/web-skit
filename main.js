@@ -1,13 +1,17 @@
+/**
+ * @author anovsiradj
+ * @version 2025,2013
+ */
 
 globalThis.dumpType ??= 'debug'
 globalThis.dump = function () {
 	Array.from(arguments).forEach(i => console[dumpType](i))
 };
 
-globalThis.emptyConfig ??= {
+globalThis.isEmptyConfig ??= {
 	falseIsEmpty: true,
 }
-globalThis.empty = function () {
+globalThis.isEmpty = function () {
 	return Array.from(arguments).every(e => {
 		if (Object.is(e, null)) {
 			return true
@@ -19,7 +23,7 @@ globalThis.empty = function () {
 		if (globalThis.Element && e instanceof globalThis.Element) {
 			return false;
 		}
-		if (typeof e === 'boolean' && e == false && globalThis?.emptyConfig?.falseIsEmpty) {
+		if (typeof e === 'boolean' && e == false && globalThis?.isEmptyConfig?.falseIsEmpty) {
 			return true
 		}
 		if (typeof e === 'string' && e.length === 0) {
@@ -36,20 +40,18 @@ globalThis.empty = function () {
 		return false
 	})
 };
-globalThis.isEmpty = globalThis.empty
 
-globalThis.isset = function () {
+globalThis.isValue = function () {
 	return Array.from(arguments).every(e => {
 		if (Object.is(e, null)) {
 			return false
 		}
-		if (Object.is(e, globalThis.undefined)) {
+		if (Object.is(e, undefined)) {
 			return false
 		}
 		return true
 	})
 };
-globalThis.isHasValue = globalThis.isset
 
 globalThis.isTypeOf = function (data, type) {
 	return (typeof data === type)

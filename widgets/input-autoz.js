@@ -5,8 +5,12 @@
  */
 
 $.fn.inputAutozConfig = {
-	select2Config: {},
-	select2AjaxConfig: {},
+	select2Config: {
+		// ...
+	},
+	select2AjaxConfig: {
+		// ...
+	},
 	juiConfig: {
 		minLength: 1,
 		autoFocus: true,
@@ -36,7 +40,7 @@ $.fn.inputAutoz = function (newConfig) {
 	}
 
 	let ajaxReqHref = termElem.dataset.ajaxReqHref ?? formElem.ajaxReqHref;
-	if (empty(ajaxReqHref)) {
+	if (isEmpty(ajaxReqHref)) {
 		console.error('ajaxReqHref kosong!')
 		return
 	}
