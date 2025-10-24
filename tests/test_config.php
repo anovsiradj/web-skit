@@ -13,3 +13,7 @@ $count++;
 $_COOKIE['count'] = $count;
 setcookie('count', $count);
 // dd($count);
+
+$cutter = new anovsiradj\Cutter;
+$cutter->data(compact('title', 'count'));
+$cutter->set('layout', '/test_layout.php');

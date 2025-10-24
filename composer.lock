@@ -4,9 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "45eaa9d6557b2c7ab859b0fff40c1ef7",
+    "content-hash": "0bcb5ff6c24609c365e55ddc3b682f82",
     "packages": [],
     "packages-dev": [
+        {
+            "name": "anovsiradj/cutter",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anovsiradj/php-cutter.git",
+                "reference": "e19af0f20544552ce790d75d12eb9f66ccc26f98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anovsiradj/php-cutter/zipball/e19af0f20544552ce790d75d12eb9f66ccc26f98",
+                "reference": "e19af0f20544552ce790d75d12eb9f66ccc26f98",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "symfony/var-dumper": "~3 || @stable"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "Cutter.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "anovsiradj",
+                    "email": "anov.siradj22@gmail.com"
+                }
+            ],
+            "description": "Flexible Template Library",
+            "support": {
+                "issues": "https://github.com/anovsiradj/php-cutter/issues",
+                "source": "https://github.com/anovsiradj/php-cutter/tree/4.0.0"
+            },
+            "time": "2024-06-10T01:25:18+00:00"
+        },
         {
             "name": "npm-asset/bootstrap",
             "version": "5.3.7",
@@ -597,6 +640,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "anovsiradj/cutter": 20,
         "npm-asset/select2-bootstrap-5-theme": 20,
         "symfony/var-dumper": 0,
         "yiisoft/arrays": 20,

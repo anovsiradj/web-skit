@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/test.php';
+require __DIR__ . '/test_config.php';
 ?>
 
 <!DOCTYPE html>

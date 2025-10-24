@@ -21,6 +21,7 @@
   ],
   "require-dev": {
     "symfony/var-dumper": "@stable",
+    "anovsiradj/cutter": "@dev",
     "yiisoft/strings": "@dev",
     "yiisoft/arrays": "@dev",
     "twbs/bootstrap": "~5",
