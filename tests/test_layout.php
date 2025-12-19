@@ -20,6 +20,8 @@
 
 <body class="container py-5">
 	<?php $cutter->section('content') ?>
+
+	<?php include __DIR__ . '/../widgets/twbs/v5_sceme.html' ?>
 </body>
 
 <script src="../vendor/npm-asset/jquery/dist/jquery.min.js"></script>
@@ -27,6 +29,7 @@
 <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="../main.js?<?= $count ?>"></script>
+<script src="../widgets/twbs/v5_sceme.js?<?= $count ?>"></script>
 
 <?php $cutter->section('script') ?>
 

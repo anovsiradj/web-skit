@@ -4,7 +4,7 @@ use Yiisoft\Strings\Inflector;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$title = basename($_SERVER['REQUEST_URI'], '.php');
+$title = basename($_SERVER['SCRIPT_NAME'], '.php');
 $title = (new Inflector)->toPascalCase($title);
 
 $_COOKIE['count'] ??= 0;

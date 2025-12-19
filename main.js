@@ -1,11 +1,17 @@
 /**
  * @author anovsiradj
- * @version 2025,2013
+ * @version 2025,2020,2016,2013
  */
 
 globalThis.dumpType ??= 'debug'
 globalThis.dump = function () {
 	Array.from(arguments).forEach(i => console[dumpType](i))
+};
+globalThis.dumpWith = function (_new, ...params) {
+	let _old = dumpType
+	dumpType = _new
+	dump(...params);
+	dumpType = _old
 };
 
 globalThis.isEmptyConfig ??= {

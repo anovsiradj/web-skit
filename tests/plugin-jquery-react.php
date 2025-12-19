@@ -25,9 +25,9 @@ $cutter('content', function () { ?>
 
 	<dl class="react">
 		<dt>Coffee</dt>
-		<dd>- black hot drink</dd>
+		<dd>black hot drink</dd>
 		<dt>Milk</dt>
-		<dd>- white cold drink</dd>
+		<dd>white cold drink</dd>
 	</dl>
 <?php });
 
