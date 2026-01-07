@@ -1,0 +1,38 @@
+table.stuck {
+	position: relative;
+	border-collapse: collapse;
+}
+
+.stuck-top {
+	top: 0;
+}
+
+.stuck-bottom {
+	bottom: 0;
+}
+
+tr>.stuck {
+	position: sticky;
+	z-index: 1;
+
+	border-color: red;
+}
+
+tr>.stuck-left {
+	left: 0;
+}
+
+tr>.stuck-right {
+	right: 0;
+}
+
+thead.stuck,
+tfoot.stuck {
+	position: sticky;
+	z-index: 2;
+}
+
+thead.stuck>tr>.stuck,
+tfoot.stuck>tr>.stuck {
+	z-index: 3;
+}
