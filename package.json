@@ -1,5 +1,24 @@
 {
   "name": "@anovsiradj/web-skit",
+  "version": "1.0.0",
+  "description": "Skit (Simple Kit) for Website",
+  "homepage": "https://github.com/anovsiradj/web-skit#readme",
+  "bugs": {
+    "url": "https://github.com/anovsiradj/web-skit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anovsiradj/web-skit.git"
+  },
   "license": "MIT",
-  "author": "anovsiradj <anov.siradj22@gmail.com>"
+  "author": "anovsiradj <anov.siradj22@gmail.com>",
+  "type": "commonjs",
+  "main": "main.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
