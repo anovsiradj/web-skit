@@ -1,7 +1,7 @@
 {
   "name": "@anovsiradj/web-skit",
   "version": "1.0.0",
-  "description": "Skit (Simple Kit) for Website",
+  "description": "skit (simple kit) for kiss",
   "homepage": "https://github.com/anovsiradj/web-skit#readme",
   "bugs": {
     "url": "https://github.com/anovsiradj/web-skit/issues"
@@ -12,8 +12,6 @@
   },
   "license": "MIT",
   "author": "anovsiradj <anov.siradj22@gmail.com>",
-  "type": "commonjs",
-  "main": "main.js",
   "directories": {
     "doc": "docs",
     "test": "tests"

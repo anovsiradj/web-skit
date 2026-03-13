@@ -12,8 +12,8 @@
 	<link rel="stylesheet" href="../vendor/twbs/bootstrap-icons/font/bootstrap-icons.min.css">
 
 	<link rel="stylesheet" href="../main.css?<?= $count ?>">
-	<link rel="stylesheet" href="../widgets/twbs/v5_sceme.css?<?= $count ?>">
-	<script src="../widgets/twbs/v5_sceme.js?<?= $count ?>"></script>
+	<link rel="stylesheet" href="../widgets/twbs/v5-dark-mode-toggle.css?<?= $count ?>">
+	<script src="../widgets/twbs/v5-dark-mode-toggle.js?<?= $count ?>"></script>
 
 	<?php $cutter->section('style') ?>
 </head>
@@ -21,7 +21,7 @@
 <body class="container py-5">
 	<?php $cutter->section('content') ?>
 
-	<?php include __DIR__ . '/../widgets/twbs/v5_sceme.html' ?>
+	<?php include __DIR__ . '/../widgets/twbs/v5-dark-mode-toggle.html' ?>
 </body>
 
 <script src="../vendor/npm-asset/jquery/dist/jquery.min.js"></script>
@@ -29,7 +29,6 @@
 <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="../main.js?<?= $count ?>"></script>
-<script src="../widgets/twbs/v5_sceme.js?<?= $count ?>"></script>
 
 <?php $cutter->section('script') ?>
 

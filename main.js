@@ -1,6 +1,8 @@
 /**
  * @author anovsiradj
  * @version 2025,2020,2016,2013
+ * 
+ * my custom global function, to make it easier to do some things, and also to make the code more readable.
  */
 
 globalThis.dumpType ??= 'debug'
